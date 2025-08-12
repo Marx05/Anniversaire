@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lettre pour toi</title>
+  <style>
+    body {
+      margin: 0;
+      background: rgb(103, 104, 78);
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+    }
+
+    .container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .texte-lettre {
+      position: absolute;
+      top: 30%;
+      left: 12%;
+      right: 12%;
+      bottom: 10%;
+      color: #3e1f0d;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      z-index: 2;
+      overflow-y: auto;
+      border-right: 2px solid #3e1f0d;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #3e1f0d; }
+    }
+
+    .btn-retour {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #c71585;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      text-align: center;
+      position: relative;
+    }
+
+    .btn-retour:hover {
+      background-color: #a21263;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Image du parchemin -->
+    <img src="../asset/lettre.jpeg" alt="Parchemin romantique"/>
+
+    <!-- Texte qui s’écrit -->
+    <div id="lettre" class="texte-lettre"></div>
+  </div>
+
+  <a href="../index.html" class="btn-retour">⟵ Retour</a>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_599a5db6bb.mp3" type="audio/mpeg" />
+  </audio>
+
+  
+ 
+  <script>
+    const texte = `             Luna Mia,
+        Je ne sais pas ce que les silences ont fait de nous, mais je sais une chose : je ne pouvais pas laisser passer ce jour sans t’écrire.
+    Aujourd’hui, le monde a vu naître celle qui a fait briller le mien. Ton anniversaire restera toujours spécial à mes yeux, parce qu’il marque l’arrivée de la femme qui a su toucher mon cœur comme personne.
+    
+    Je n’attends rien, je n’exige rien. Je veux juste que tu sois heureuse, entourée d’amour, de lumière et de tendres pensées. Et si, ne serait-ce qu’un instant, je traverse ton cœur aujourd’hui, sache que c’est un cadeau que je chérirai en silence.
+    Tu es encore là, quelque part en moi.
+Joyeux anniversaire, Luna Mia.
+                                                                Mr Dunnel`;
+
+    let index = 0;
+    const lettre = document.getElementById("lettre");
+
+    function ecrireLettre() {
+      if (index < texte.length) {
+        lettre.textContent += texte.charAt(index);
+        index++;
+        setTimeout(ecrireLettre, 40);
+      }
+    }
+
+    window.onload = ecrireLettre;
+  </script>
+</body>
+</html>
